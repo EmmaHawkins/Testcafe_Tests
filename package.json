@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "testcafe chrome:headless tests/**/* -r xunit:/tmp/test-results/res.xml"
+    "test": "testcafe chrome:headless ./getting_started/tests/**/* -r xunit:/tmp/test-results/res.xml"
   },
   "keywords": [],
   "author": "",
