@@ -1,0 +1,16 @@
+{
+  "name": "test_cafe_stuff",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "testcafe chrome:headless tests/**/* -r xunit:/tmp/test-results/res.xml"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "testcafe": "^0.23.2",
+    "testcafe-reporter-xunit": "^2.1.0"
+  }
+}
