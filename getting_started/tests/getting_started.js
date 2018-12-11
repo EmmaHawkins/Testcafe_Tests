@@ -1,11 +1,31 @@
+import Page from '../page.model';
 import { Selector } from 'testcafe';
 
-fixture `Getting Started`
-    .page `http://devexpress.github.io/testcafe/example`;
+const page = new Page();
 
-test('Should display the "Thank You" page upon submission of a valid name', async t => {
+fixture `My Fixture`
+    .page `https://devexpress.github.io/testcafe/example/`;
+
+
+test('Should be able to type in the text box', async t =>{
     await t
-        .typeText('#developer-name', "John Smith")
-        .click('#submit-button')
-        .expect(Selector('#article-header').innerText).eql('Thank you, John Smith!');    
+        .typeText(page.nameInput, 'Peter')
+        .typeText(page.nameInput, 'Paker',{ replace: true })
+        .typeText(page.nameInput, 'r', { caretPos: 2 })
+        .expect(page.nameInput.value).eql('Parker');
 });
+
+test('Should click check boxes', async t => {
+    for(const feature of page.featureList) {
+        await t
+            .click(feature.label)
+            .expect(feature.checkbox.checked).ok();
+    }
+});
+
+test('Should submit Name', async t => {
+    const header = Selector('#article-header');
+    await page.submitName('Peter');
+    await t.expect(header.innerText).eql('Thank you, Peter!');
+});
+
