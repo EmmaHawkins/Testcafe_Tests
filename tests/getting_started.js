@@ -1,4 +1,4 @@
-import Page from '../page.model';
+import Page from '../page_objects/page.model';
 import { Selector } from 'testcafe';
 
 const page = new Page();
@@ -6,6 +6,11 @@ const page = new Page();
 fixture `My Fixture`
     .page `https://devexpress.github.io/testcafe/example/`;
 
+
+test('Should have the correct title', async t => {
+    await t
+        .expect(Selector('title').innerText).eql('TestCafe Example Page');
+})
 
 test('Should be able to type in the text box', async t =>{
     await t
